@@ -1,0 +1,66 @@
+Style.css
+
+body 
+{
+  margin: 20px;
+}
+
+:root
+{
+  --bg-color: #ffffff;
+  --primary-color: #000000;
+  --second-color: #a6f5ff;
+  --hover-bg-color: #efefef
+  --shadow-1: 0px 2px 10px rgba(0,0,0,0.3);
+  --shadow-2: 0px 2px 10px rgba(26, 112, 224, 0.4);
+}
+   
+*
+{
+  
+  margin: 0;
+  padding: 0;
+  box-sizing: boarder-box;
+  
+}
+
+.nav
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 3vw;
+  height: 70px;
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+a
+{
+  text-decoration : none;
+  color: var(--primary-color);
+  font-weight: 500;
+  
+}
+ul
+{
+  list-style-type: none;
+}
+
+.menu
+{
+  display: flex;
+}
+
+.nav_link
+{
+  padding: 26px 10px;
+  margin-inline: 10px;
+  transition: .3s;
+}
+
+
+body
+{
+background: #efefef;
+}
