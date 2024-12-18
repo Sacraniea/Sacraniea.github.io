@@ -192,6 +192,11 @@ body.dark-mode .icon-sun {
     display: block;
 }
 
+section{
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .nav {
