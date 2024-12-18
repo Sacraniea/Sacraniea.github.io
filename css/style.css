@@ -1,3 +1,4 @@
+/* Modern Engineering Portfolio Styles with Light/Dark Mode */
 * {
     margin: 0;
     padding: 0;
@@ -68,14 +69,14 @@ body.dark-mode .dropdown_content li a:hover {
 /* Nav Bar Styles */
 .nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center menu items */
     align-items: center;
     padding-inline: 3vw;
     height: 70px;
     background: var(--bg-color);
     color: var(--primary-color);
     transition: background 0.5s ease, color 0.5s ease;
-    box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-1);
 }
 
 .menu {
@@ -85,26 +86,31 @@ body.dark-mode .dropdown_content li a:hover {
 }
 
 .nav_link {
-    color: var(--primary-color);
-    text-decoration: none;
-    padding: 20px 15px;
-    margin-inline: 10px;
-    height: 97%;
+    padding: 0 15px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--primary-color); /* Prevent purple */
+    text-decoration: none; /* Remove underline */
+    transition: 0.5s;
     transition: background 0.5s ease, color 0.5s ease;
+}
+
+.nav_link:visited, .nav_link:active {
+    color: var(--primary-color); /* Ensure visited/active links stay the same color */
+    text-decoration: none;
 }
 
 .nav_link:hover {
     background: var(--hover-bg-color);
     box-shadow: var(--shadow-1);
-    border-radius: 5px; 
 }
 
 /* Dropdown Styles */
 .dropdown {
     position: relative;
+    height: 100%;
 }
 
 .dropdown_content {
@@ -138,14 +144,15 @@ body.dark-mode .dropdown_content li a:hover {
 .theme-toggle {
     position: absolute;
     right: 3%; 
-    top: 17px;
+    top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none; 
 }
 
 .theme-toggle input {
-    display: none; /* Hide checkbox */
+    display: none; 
 }
 
 .toggle-label {
@@ -157,6 +164,7 @@ body.dark-mode .dropdown_content li a:hover {
     padding: 5px 10px;
     box-shadow: var(--shadow-1);
     transition: all 0.5s ease;
+    user-select: none; 
 }
 
 body.dark-mode .toggle-label {
@@ -168,8 +176,8 @@ body.dark-mode .toggle-label {
 .icon-sun {
     font-size: 1.2rem;
     transition: opacity 0.5s ease;
-    pointer-events: none;
-    user-select: none;
+    pointer-events: none; 
+    user-select: none; 
 }
 
 .icon-sun {
@@ -184,9 +192,34 @@ body.dark-mode .icon-sun {
     display: block;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
 
-section
-{
-    padding-top: 2vw;
-    padding-left: 2vw;
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav_link {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .theme-toggle {
+        position: static;
+        margin-top: 10px;
+    }
+
+    .dropdown_content {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        transform: none;
+    }
 }
