@@ -193,8 +193,8 @@ body.dark-mode .icon-sun {
 }
 
 section{
-    padding-top: 1em;
-    padding-left: 1em;
+    padding-top: 3em;
+    text-align: center;
 }
 
 /* Mobile Responsiveness */
