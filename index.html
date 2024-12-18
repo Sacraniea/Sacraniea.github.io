@@ -9,7 +9,14 @@
 <body>
 
     <nav class="nav">
-        <ul class="menu">
+
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <ul class="menu" id="menu">
             <li><a href="#" class="nav_link">Home</a></li>
             <li><a href="#" class="nav_link">About Me</a></li>
 
@@ -25,7 +32,7 @@
             <li><a href="#" class="nav_link">Experience</a></li>
             <li><a href="#" class="nav_link">Contact</a></li>
         </ul>
-
+        <!-- Dark Mode Toggle Switch -->
         <div class="theme-toggle">
             <input type="checkbox" id="dark-mode-toggle" />
             <label for="dark-mode-toggle" class="toggle-label">
@@ -35,29 +42,29 @@
         </div>
     </nav>
 
-
+    <!-- Main Sections -->
     <section id="home">
         <h1>Welcome to My Portfolio</h1>
     </section>
 
     <section id="about">
         <h2>About Me</h2>
-
+        <p>Short bio and goals...</p>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
-
+        <p>Details coming soon...</p>
     </section>
 
     <section id="experience">
         <h2>Experience</h2>
-
+        <p>Relevant roles and achievements...</p>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-
+        <p>Email, LinkedIn, and more...</p>
     </section>
 
     <script>
@@ -66,6 +73,14 @@
     
         toggle.addEventListener("change", () => {
             body.classList.toggle("dark-mode");
+        });
+
+        // Toggle the menu when clicking the hamburger icon
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
         });
     </script>
 </body>
