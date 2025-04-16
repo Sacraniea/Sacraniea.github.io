@@ -1,163 +1,261 @@
-/* INIT */
 *
 {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
-/* VARS */
-:root
-{
-    --bg-color: #201f1e;
-    --primary-color: #FFFFFF;
-    --secondary-color: #efefef;
-    --hover-color: #3d3c3b;
-    --shadow-color1 : #eff37d;
-}
-
-/*Body*/
-body
-{
-    background-color: #000000;
-}
-
-/*Navgation Bar*/
-
-.navbar a
-{
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 500;
-}
-.navbar ul
-{
-    list-style-type: none;
-}
-
-.navbar
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 4vw;
-    height: 70px;
-    background: var(--bg-color);
-    color: var(--hover-color);
-
-}
-
-.navbar-options
-{
-    display: flex;
-    margin-left: auto;
-}
-
-.nav-link
-{
-    padding: 26px 15px;
-    margin-inline: 0px;
-    transition: 0.3s;
-}
-
-.nav-link:hover
-{
-    background-color: var(--hover-color);
-    box-shadow: 0px 15px 15px -8px rgba(255, 255, 100, 0.682); 
-
-}
-
-.landing
-{
-    color: var(--primary-color);
-    gap: 10px;
-
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    text-shadow: 0px 0px 20px rgb(255, 255, 100); 
-
-}
-
-
-
-
-#text-swap
-{
-    display: inline-block;
-    text-align: left; 
-    transition: opacity 0.8s ease-in-out;
-    white-space: nowrap; 
-    width: 160px; 
-    text-decoration: underline;
-    font-size: xx-large;
-}
-
-
-
-
-@media (max-width: 768px) {
-
-
-    .navbar {
-        flex-direction:row;
-        height: 9vh;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-    }
-
-    .navbar-options {
-        flex-direction: row;
-        width: 100%; 
-        height: 100%;
-        align-items: center; 
-        margin-left: 0; 
-    }
-
-    .nav-link {
-        padding: 6vw; 
-        width: 100%;
-        height: 100%;
-        text-align: center;
-    }
-
-   
-    .landing {
-        display: flex;
-        flex-direction: column; /* Ensures text stacks normally */
-        justify-content: center; 
-        align-items: center;
-        text-align: center;
-        height: 60vh;
-        width: 100vw;
-        padding: 0 5vw;
-        box-sizing: border-box;
-    }
-
-    .landing h2 {
-        display: inline; /* Keeps text inline */
-        text-align: center;
-        white-space: normal; /* Ensures text can wrap naturally */
-        max-width: 90vw; /* Adjusts the width to fit smaller screens */
-        word-break: break-word; /* Prevents forced breaking */
-    }
-
-    .step2
+/* Navigation Status*/
+    nav
     {
-        white-space: nowrap; /* Prevents wrapping to the next line */
-        display: inline; /* Ensures it stays together */
+        position: fixed;
+        top: 1vh;
+        width: 99%;
+        z-index: 1;
     }
-   
-    #text-swap {
 
-        width: auto;
+/* Navigation Bar Styling */
+    ul
+    {
+        opacity: 0; /* start state just in case */
+        
+
+        margin: 0;
+        padding: 0;
+
+        /* Navigation Format */
+        list-style: none;
+        display:flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        animation: fadeSlideUp 1s ease-out 0.5s forwards;
+    }
+
+    ul > li
+    {
+        /* Top Layer Navigation */
+        
+        height: 7.5vh;
+        border-radius: 1rem;
+        background: transparent; 
+        transition: 0.5s ease-out;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ul li a
+    {
+        /* Navigation Text Fortmatitng and Positioning */
+        display: block;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        color: #ffffffc6;
+        text-decoration: none;
         text-align: center;
     }
+
+    ul li ul.dropdown li
+    {
+        /* Drop-down Text Container */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul li ul.dropdown
+    {
+        /* Drop-down */
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: stretch;
+        background: transparent; 
+        top:101%;
+        z-index: 999;
+        margin: 0;
+        animation: fadeSlideUp 0.1s ease-out 0.1s forwards;
+        
+    }
+
+    ul li:hover
+    {
+        /* Hover Effect */
+        background: rgba(255, 255, 255, 0.05); /* light white tint */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.08); /* subtle glow */
+    }
+
+    ul li:hover ul.dropdown
+    {
+        /* Drop-down on Hover */
+        display: flex;
+    }
+
+
+/* Landing Page Formatting*/
+
+    body
+    {
+        background: linear-gradient(
+            -45deg,
+            #242936 0%,      /* darker blue-grey */
+            #202433 10%,     /* muted midnight tone */
+            #181c29 20%,     /* neutral navy */
+            #141821 30%,     /* desaturated and dark */
+            #10131d 40%,     /* very dark base */
+            #131622 50%,     
+            #161926 60%,     
+            #1a1e29 70%,     
+            #202630 85%,     /* darkened slate */
+            #39434e 100%     /* softened deep steel */
+          );
+    }
+
+    h1,p
+    {
+        color: transparent;
+        font-weight: bold;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.904));
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /*Landing Text Configuration*/
+    .landing
+    {
+        position: fixed;
+        top: 1vh;
+        width: 100%;
+
+        height: 120vh;
+        opacity: 0; 
+        animation: fadeSlideUp 1s ease-out 0.5s forwards;
+
+        min-height: 95vh;
+        width: 800px;
+        padding: 0 30vw;
+        display: flex;
+
+
+        font-size: 2rem;
+        flex-direction: column;
+        justify-content:center;
+        align-items:flex-start;
+    }
+
+    /*Manage Hidden text*/
+    .hidden
+    {
+        opacity: 0;
+    }
+
+    /*Morph Text Positioning*/
+    .morph 
+    {
+        position: relative;
+    }
+
+    /*Morph Text Formatting*/     
+    .greeting-frame2
+    {
+        position: absolute;
+        top: 10.5vh;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+      
+
+
+
+/* Universal Glass Effect */
+    .glass
+    {
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+
+
+        background: rgba(255, 255, 255, 0.05); /* light white tint */
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        border-radius: 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+        
+    }
+
+
+/* Media Options */
+
+@media(max-width: 1366px)
+{
+    .landing
+    {
+
+        min-height: 95vh;
+        width: 600px;
+        padding: 0 20vw;
+        display: flex;
+
+
+        font-size: clamp(1.5rem, 1vw, 2rem);
+        flex-direction: column;
+        justify-content:center;
+        align-items:flex-start;
+    }
+
+    .greeting-frame2
+    {
+        position: absolute;
+        top: 8.5vh;
+        left: 0;
+        width: 100%;
+        /* Remove default margins for exact overlap */
+        margin: 0;
+        padding: 0;
+    }
 }
+
+
+@media(max-width: 800px)
+{
+    .landing
+    {
+
+        min-height: 95vh;
+        width: 400px;
+        padding: 0 5vw;
+        display: flex;
+
+
+        font-size: clamp(1rem, 1vw, 1.5rem);
+        flex-direction: column;
+        justify-content:center;
+        align-items:flex-start;
+    }
+
+    .greeting-frame2
+    {
+        position: absolute;
+        top: 5.5vh;
+        left: 0;
+        width: 100%;
+        /* Remove default margins for exact overlap */
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@keyframes fadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(3vh);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
