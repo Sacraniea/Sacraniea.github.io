@@ -5,51 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex's Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-
-        <nav class = "navbar">
-            <ul class = "navbar-options">
-                <li><a href="#Contact" class = "nav-link">Contact Me</a></li>
-                <li class = "nav-dropdown">
-                    <a href="#" class = "nav-link">Experience</a>
-                     <!---   <ul class ="nav-dropdown-menu">
+        <nav class = "glass">
+            <ul>
+                <li><a href="#Contact">Contact Me</a></li>
+                <li>
+                    <a href="#">Experience</a>
+                        <ul class ="dropdown glass">
                             <li><a href="#Professional">Professional</a></li>
                             <li><a href="#Projects">Projects</a></li>
                             <li><a href="#Community">Community</a></li>
-                        </ul> -->
+                        </ul> 
                 </li>
-                <li><a href="#about" class = "nav-link">About Me</a></li>
+                <li><a href="#about">About Me</a></li>
             </ul>
         </nav>
+        
+
         <section class = "landing">
-            <h2 class= "step1"> Hello. </h2>
-            <h2 class= "step2"> My name is Alex Sacanie and I aspire to engineer</h2>
-            <h1 id = "text-swap" class= "step2">with impact.</h1>
+            <div class = "morph">
+
+                <div>
+                    <h1 id = "intro"> Hi, I'm Alexandros Sacranie </h1>
+                    <p class = "greeting morph-layer"> A driven Engineering & IT student with a passion for innovation, problem-solving and building things that matter.</p>
+                </div>
+
+                <div class = "greeting-frame2 morph-layer hidden">
+                    <p> Whether you're a fellow student, industry professional, or recruiter, I'm glad you're here.</p>
+                </div>
+
+            </div>
 
         </section>
-
-
-
-
+        <div style="height: 1000vh;"></div>
         <script>
-            const phrases = ["with impact.", "with meaning.", "for others."]
-            let index = 0;
-            function textswap()
-            {
-                const textElement = document.getElementById("text-swap")
-                textElement.style.opacity = 0;
-
-                setTimeout(() => 
-                {
-                    index = (index + 1) % phrases.length;
-                    textElement.textContent = phrases[index];
-
-                    textElement.style.opacity = 1;
-                }, 500);
-            }
-
-            setInterval(textswap, 5000);
+            // Register the ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Create a timeline that is controlled by scrolling
+            const morphTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: ".landing",  // the section that activates the animation
+                start: "top top",     // start the animation when the top of .landing hits the top of the viewport
+                end: "bottom top",    // end the animation when the bottom of .landing reaches the top of the viewport
+                scrub: true           // link the animation progress to the scrollbar position
+              }
+            });
+            
+            // Animate the first text layer to fade out while the second fades in
+            morphTimeline.to(".greeting.morph-layer", { opacity: 0, duration: .1 })
+             .fromTo(".greeting-frame2.morph-layer", 
+                     { opacity: 0 }, 
+                     { opacity: 1, duration: .1 },0);
         </script>
 </body>
 </html>
