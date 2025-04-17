@@ -1,23 +1,76 @@
 *
 {
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
 }
+/* ----------------- Mobile Navbar -------------------*/
+    #mobilenav, #mobilehamburger
+    {
+        display:none;
+    }
 
-/* Navigation Status*/
-    nav
+    #mobilenav ul
+    {
+        opacity: 0; 
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        /* Navigation Format */
+        list-style: none;
+        display:flex;
+        flex-direction: column-reverse;
+        align-items: strech;
+        padding-top: 1rem;
+        animation: fadeSlideUp 1s ease-out 0.5s forwards;
+    }
+    
+    #mobilenav a
+    {
+            /* Navigation Text Fortmatitng and Positioning */
+            display: block;
+            width: 100%;
+            padding: 1rem 0;
+            color: #ffffffc6;
+            text-decoration: none;
+            text-align: center;
+    }
+
+    #mobilenav li:hover,#mobilenav li:active #mobilehamburger:hover,#mobilehamburger:active
+    {
+        /* Hover Effect */
+        background: rgba(255, 255, 255, 0.133); /* light white tint */
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* subtle glow */
+        border-left: 1px solid #ffffff4b;
+    }
+
+    #mobilenav > ul > li
+    {
+        /* Top Layer Navigation */
+
+        align-items: stretch;
+        transition: 0.5s ease-out;
+
+
+    }
+
+/* ----------------- Desktop Navbar -------------------*/
+    #desktopnav
     {
         position: fixed;
-        top: 1vh;
-        width: 99%;
-        z-index: 1;
+        right: 10px;
+        top: 10px;
+        left: 10px;
+        z-index: 99999;
     }
 
 /* Navigation Bar Styling */
-    ul
+    #desktopnav ul
     {
-        opacity: 0; /* start state just in case */
-        
-
+        opacity: 0; 
         margin: 0;
         padding: 0;
 
@@ -25,68 +78,74 @@
         list-style: none;
         display:flex;
         flex-direction: row-reverse;
-        align-items: center;
         animation: fadeSlideUp 1s ease-out 0.5s forwards;
     }
 
-    ul > li
+    #desktopnav .home
+    {
+        margin-right: auto;
+    }
+
+    #desktopnav a
+    {
+            /* Navigation Text Fortmatitng and Positioning */
+            padding: 30px 30px; 
+            color: #ffffffc6;
+            text-decoration: none;
+            text-align: center;
+    }
+
+    #desktopnav li:hover
+    {
+        /* Hover Effect */
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.133); /* light white tint */
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* subtle glow */
+
+    }
+
+    #desktopnav > ul > li
     {
         /* Top Layer Navigation */
-        
-        height: 7.5vh;
-        border-radius: 1rem;
-        background: transparent; 
-        transition: 0.5s ease-out;
         display: flex;
         position: relative;
+
         justify-content: center;
         align-items: center;
+
+        height: 7.5vh;
+        border-radius: 1rem;
+        transition: 0.5s ease-out;
+
+
     }
 
-    ul li a
-    {
-        /* Navigation Text Fortmatitng and Positioning */
-        display: block;
-        padding-left: 1vw;
-        padding-right: 1vw;
-        color: #ffffffc6;
-        text-decoration: none;
-        text-align: center;
-    }
-
-    ul li ul.dropdown li
-    {
-        /* Drop-down Text Container */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    ul li ul.dropdown
+    #desktopnav .dropdown
     {
         /* Drop-down */
         display: none;
-        position: absolute;
         flex-direction: column;
+        position: absolute;
         align-items: stretch;
-        background: transparent; 
+
         top:101%;
         z-index: 999;
         margin: 0;
-        animation: fadeSlideUp 0.1s ease-out 0.1s forwards;
+
         
+        animation: fadeSlideUp 0.1s ease-out 0.1s forwards;
     }
 
-    ul li:hover
-    {
-        /* Hover Effect */
-        background: rgba(255, 255, 255, 0.05); /* light white tint */
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.08); /* subtle glow */
+    #desktopnav .dropdown li
+    {                       /* submenu rows */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    ul li:hover ul.dropdown
+    #desktopnav li:hover > .dropdown
     {
         /* Drop-down on Hover */
         display: flex;
@@ -99,17 +158,13 @@
     {
         background: linear-gradient(
             -45deg,
-            #242936 0%,      /* darker blue-grey */
-            #202433 10%,     /* muted midnight tone */
-            #181c29 20%,     /* neutral navy */
-            #141821 30%,     /* desaturated and dark */
-            #10131d 40%,     /* very dark base */
-            #131622 50%,     
-            #161926 60%,     
-            #1a1e29 70%,     
-            #202630 85%,     /* darkened slate */
-            #39434e 100%     /* softened deep steel */
-          );
+            #0b0c10 0%,       /* inky black for deep contrast */
+            #10121b 20%,      /* a hint of midnight navy */
+            #1c1f26 40%,      /* deep slate adding dimension */
+            #2a2d38 60%,      /* smooth charcoal to reinforce depth */
+            #1c1f26 80%,      /* returning to deep slate */
+            #10121b 100%      /* finishing with a strong midnight navy */
+        );
     }
 
     h1,p
@@ -124,6 +179,7 @@
     /*Landing Text Configuration*/
     .landing
     {
+        z-index: 1; /* ensure landing is below catalogue when needed */
         position: fixed;
         top: 1vh;
         width: 100%;
@@ -157,7 +213,7 @@
     }
 
     /*Morph Text Formatting*/     
-    .greeting-frame2
+    .greeting-frame2,.greeting-frame3,.greeting-frame4,.greeting-framefinal
     {
         position: absolute;
         top: 10.5vh;
@@ -167,14 +223,56 @@
         padding: 0;
     }
       
+    .catalogue 
+    {
+        position: absolute;
+        left: 30vw;
+        top: 190vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 800px;
+        align-content: center;
+        column-gap: 9em;
+        row-gap: 9em;
+        z-index: 3;
+        
+    }
 
+    .item1, .item2, .item3, .item4, .item5, .item6
+    {
+        text-align: center;
+        justify-content: center;
+    }
 
+    .pane
+    {
+        display: flex;
+        row-gap: 0.25em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background: transparent; 
+        transition: 0.5s ease-in-out;
+    }
+
+    .pane:hover 
+    {
+        background: rgba(255, 255, 255, 0.246); /* Slightly brighter background on hover */
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.542); /* Enhanced shadow for a "lift" effect */
+        transform: translateY(-5px); /* Subtle lift effect */
+        border: 1px solid rgba(255, 255, 255, 0.471); /* Increase border brightness */
+
+    }
 
 /* Universal Glass Effect */
     .glass
     {
-        backdrop-filter: blur(50px);
-        -webkit-backdrop-filter: blur(50px);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
 
 
         background: rgba(255, 255, 255, 0.05); /* light white tint */
@@ -183,9 +281,7 @@
         border-radius: 1rem;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
-        
     }
-
 
 /* Media Options */
 
@@ -246,6 +342,70 @@
         margin: 0;
         padding: 0;
     }
+    
+    #desktopnav
+    {
+        display: none;
+    }
+    
+    #mobilenav
+    {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: -100%;
+        height: 100vh;
+        width: min(15em, 100%);
+        z-index: 10;
+        border-left: 1px solid #ffffff69;
+        transition: right 300ms ease-out
+    }
+
+    #overlay
+    {
+        background: #00000076;
+        position: fixed;
+        inset:0;
+        z-index: 9;
+        display: none;
+    }
+
+    #mobilenav.show
+    {
+        right:0;
+    }
+
+    #mobilenav.show ~ #overlay
+    {
+        display: block;
+    }
+
+    #mobilehamburger
+    {
+        color: #ffffffa6;
+        padding: 1em;
+        display: block;
+        position: fixed;
+        top:10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    #mobileclose
+    {
+        background: none;
+        border: none;
+        padding: 1em;
+        cursor: pointer;
+        color: #ffff ;
+    }
+    #mobilenav ul li:last-child 
+    {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1em;
+        
+    }
+
 }
 
 
