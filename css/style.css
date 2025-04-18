@@ -4,6 +4,17 @@
     margin: 0;
     padding: 0;
 }
+*, *::before, *::after 
+{
+    box-sizing: border-box;
+}
+html
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 /* ----------------- Mobile Navbar -------------------*/
     #mobilenav, #mobilehamburger
     {
@@ -21,7 +32,6 @@
         list-style: none;
         display:flex;
         flex-direction: column-reverse;
-        align-items: strech;
         padding-top: 1rem;
         animation: fadeSlideUp 1s ease-out 0.5s forwards;
     }
@@ -31,7 +41,9 @@
             /* Navigation Text Fortmatitng and Positioning */
             display: block;
             width: 100%;
-            padding: 1rem 0;
+            padding: 3rem 0;
+            font-size: 2rem;
+            font-weight: bold;
             color: #ffffffc6;
             text-decoration: none;
             text-align: center;
@@ -64,7 +76,7 @@
         right: 10px;
         top: 10px;
         left: 10px;
-        z-index: 99999;
+        z-index: 10;
     }
 
 /* Navigation Bar Styling */
@@ -131,7 +143,7 @@
         align-items: stretch;
 
         top:101%;
-        z-index: 999;
+        z-index: 10;
         margin: 0;
 
         
@@ -156,15 +168,15 @@
 
     body
     {
-        background: linear-gradient(
-            -45deg,
-            #0b0c10 0%,       /* inky black for deep contrast */
-            #10121b 20%,      /* a hint of midnight navy */
-            #1c1f26 40%,      /* deep slate adding dimension */
-            #2a2d38 60%,      /* smooth charcoal to reinforce depth */
-            #1c1f26 80%,      /* returning to deep slate */
-            #10121b 100%      /* finishing with a strong midnight navy */
-        );
+        width: 100vh;
+        background: linear-gradient(160deg,
+        #0b0c10 0%,
+        #151823 50%,
+        #1f222d 100%
+      );
+        height: 3000px;
+        background-size: cover;
+        background-attachment: fixed;
     }
 
     h1,p
@@ -177,29 +189,44 @@
     }
 
     /*Landing Text Configuration*/
-    .landing
+    #intro 
     {
-        z-index: 1; /* ensure landing is below catalogue when needed */
-        position: fixed;
-        top: 1vh;
-        width: 100%;
-
-        height: 120vh;
-        opacity: 0; 
-        animation: fadeSlideUp 1s ease-out 0.5s forwards;
-
-        min-height: 95vh;
-        width: 800px;
-        padding: 0 30vw;
-        display: flex;
-
-
-        font-size: 2rem;
-        flex-direction: column;
-        justify-content:center;
-        align-items:flex-start;
+        font-size: 48px;
+        font-weight: bolder;
+        position: static;
     }
 
+    .landing {
+        z-index: 1; 
+        position: fixed ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        padding: 0 2em;
+        font-size: 24px;
+        text-align: center;
+        animation: fadeSlideUp 1s ease-out 0.5s forwards;
+
+      }
+
+      .morph-layer 
+      {
+        position: absolute;
+
+        width: 55vw;
+
+        top:55%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: auto;
+      }
     /*Manage Hidden text*/
     .hidden
     {
@@ -207,35 +234,35 @@
     }
 
     /*Morph Text Positioning*/
-    .morph 
-    {
-        position: relative;
-    }
+    .morph {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.5rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 800px;
+      }
 
     /*Morph Text Formatting*/     
-    .greeting-frame2,.greeting-frame3,.greeting-frame4,.greeting-framefinal
-    {
-        position: absolute;
-        top: 10.5vh;
-        left: 0;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
+
       
     .catalogue 
     {
+
         position: absolute;
-        left: 30vw;
-        top: 190vh;
+        top: 225%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
+    
         width: 800px;
-        align-content: center;
         column-gap: 9em;
         row-gap: 9em;
-        z-index: 3;
         
     }
 
@@ -243,6 +270,7 @@
     {
         text-align: center;
         justify-content: center;
+        z-index: 5;
     }
 
     .pane
@@ -285,64 +313,29 @@
 
 /* Media Options */
 
-@media(max-width: 1366px)
-{
-    .landing
-    {
-
-        min-height: 95vh;
-        width: 600px;
-        padding: 0 20vw;
-        display: flex;
-
-
-        font-size: clamp(1.5rem, 1vw, 2rem);
-        flex-direction: column;
-        justify-content:center;
-        align-items:flex-start;
-    }
-
-    .greeting-frame2
-    {
-        position: absolute;
-        top: 8.5vh;
-        left: 0;
-        width: 100%;
-        /* Remove default margins for exact overlap */
-        margin: 0;
-        padding: 0;
-    }
-}
 
 
 @media(max-width: 800px)
 {
-    .landing
+
+    #intro 
     {
-
-        min-height: 95vh;
-        width: 400px;
-        padding: 0 5vw;
-        display: flex;
-
-
-        font-size: clamp(1rem, 1vw, 1.5rem);
-        flex-direction: column;
-        justify-content:center;
-        align-items:flex-start;
+        text-align: left;
+        font-size: 42px;
+        width: 85vw;
+    }
+    .landing 
+    {
+        
+        font-size: 21px;
+    }
+    .morph-layer 
+    {
+      text-align: left;
+      top:57%;
+      width: 85vw;
     }
 
-    .greeting-frame2
-    {
-        position: absolute;
-        top: 5.5vh;
-        left: 0;
-        width: 100%;
-        /* Remove default margins for exact overlap */
-        margin: 0;
-        padding: 0;
-    }
-    
     #desktopnav
     {
         display: none;
@@ -354,8 +347,8 @@
         position: fixed;
         top: 10px;
         right: -100%;
-        height: 100vh;
-        width: min(15em, 100%);
+        height: 100%;
+        width: 80%;
         z-index: 10;
         border-left: 1px solid #ffffff69;
         transition: right 300ms ease-out
@@ -389,6 +382,12 @@
         top:10px;
         right: 10px;
         cursor: pointer;
+        z-index: 9;
+    }
+
+    #mobilehamburger .material-symbols-rounded,#mobileclose .material-symbols-rounded  
+    {
+        font-size: 2.5rem;
     }
     #mobileclose
     {
@@ -404,6 +403,30 @@
         justify-content: flex-end;
         padding-right: 1em;
         
+    }
+
+
+    .catalogue 
+    {
+        justify-content: center;
+        align-items: center;
+
+        top: 210%;
+
+        column-gap: 4em;
+        row-gap: 4em;
+
+        z-index: 3;
+        
+    }
+
+
+    .pane
+    {
+
+        width: 170px;
+        height: 170px;
+
     }
 
 }
