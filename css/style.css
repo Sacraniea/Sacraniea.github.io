@@ -47,7 +47,7 @@ html, body {
             display: block;
             width: 100%;
             padding: 3rem 0;
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: bold;
             color: #ffffffc6;
             text-decoration: none;
@@ -132,7 +132,7 @@ html, body {
         justify-content: center;
         align-items: center;
 
-        height: 7.5vh;
+        height: 75px;
         border-radius: 1rem;
         transition: 0.5s ease-out;
 
@@ -179,7 +179,7 @@ html, body {
         #151823 50%,
         #1f222d 100%
       );
-        height: 3000px;
+        height: 400vh;
         background-size: cover;
         background-attachment: fixed;
     }
@@ -197,19 +197,21 @@ html, body {
     #intro 
     {
         font-size: 48px;
+        padding-bottom: 2em ;
         font-weight: bolder;
         position: static;
     }
 
     .landing {
+
         z-index: 1; 
         position: fixed ;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        width: 100vw;
-        padding: 0 2em;
+        height: 100%;
+        width: 100%;
+
         font-size: 24px;
         text-align: center;
         animation: fadeSlideUp 1s ease-out 0.5s forwards;
@@ -221,8 +223,7 @@ html, body {
         position: absolute;
 
         width: 55vw;
-
-        top:55%;
+        top:50%;
         text-align: center;
         align-items: center;
         justify-content: center;
@@ -251,18 +252,16 @@ html, body {
 
     /*Morph Text Formatting*/     
 
-      
     .catalogue 
     {
 
-        position: absolute;
-        top: 2300px;
+
+        top: 230vh;
+
         left: 50%;
         transform: translate(-50%, -50%);
     
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-wrap: wrap;
     
         width: 800px;
@@ -318,33 +317,21 @@ html, body {
 
 /* Media Options */
 
+@media(max-width: 950px)
+{
+    .catalogue 
+    {
+        top: 280vh;
+    }
+    body
+    {
+        height: 470vh;
+    }
 
+}
 
 @media(max-width: 800px)
 {
-    body
-    {
-        height: 2500px;
-
-    }
-
-    #intro 
-    {
-        text-align: left;
-        font-size: 42px;
-        width: 85vw;
-    }
-    .landing 
-    {
-        
-        font-size: 21px;
-    }
-    .morph-layer 
-    {
-      text-align: left;
-      top:57%;
-      width: 85vw;
-    }
 
     #desktopnav
     {
@@ -399,6 +386,7 @@ html, body {
     {
         font-size: 2.5rem;
     }
+
     #mobileclose
     {
         background: none;
@@ -415,16 +403,39 @@ html, body {
         
     }
 
+    body
+    {
+        height: 2500px;
+
+    }
+
+    #intro 
+    {
+        text-align: left;
+        font-size: 42px;
+        width: 85vw;
+    }
+    .landing 
+    {
+        
+        font-size: 21px;
+    }
+    .morph-layer 
+    {
+        left:10%;
+        text-align: left;
+        top:57%;
+        width: 80%;
+    }
 
     .catalogue 
     {
-        justify-content: center;
-        align-items: center;
 
-        top: 1900px;
+        position: absolute;
+        left: 50%;
+        top:210vh;
         column-gap: 4em;
         row-gap: 4em;
-
         z-index: 3;
         
     }
@@ -433,8 +444,33 @@ html, body {
     .pane
     {
 
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
+
+    }
+
+}
+
+@media(max-width: 670px)
+{
+
+    body
+    {
+        height: 300vh;
+    }
+    #mobilenav a
+    {
+            /* Navigation Text Fortmatitng and Positioning */
+            display: block;
+            width: 100%;
+            padding: 1rem 0;
+            font-size: 1rem;
+    }
+
+    #mobilenav ul
+    {
+
+        padding-top: 0rem;
 
     }
 
