@@ -147,16 +147,14 @@
     background-size: cover;
     background-attachment: fixed;
     width: 100vw;
-    height: 400vh;
+    height: 300vh;
   }
   
-  h1, p {
-    font-weight: bold;
-    color: transparent;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.904));
-    -webkit-background-clip: text;
-            background-clip: text;
-    -webkit-text-fill-color: transparent;
+  h1, p 
+  {
+    
+    color: #fff;
+
   }
   
   #intro {
@@ -165,32 +163,30 @@
     font-weight: bolder;
     position: static;
   }
-  
+
+
   .landing {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    min-height: 100vh;  
-    overflow: hidden;   
-    z-index: 1;
+    position: relative; 
+    width: 100%;
+    height: 100vh;      
+    overflow: hidden;    
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    z-index: 1;
     font-size: 24px;
     text-align: center;
     animation: fadeSlideUp 1s ease-out 0.5s forwards;
   }
-  
-  .morph-layer {
+
+  .morph-layer 
+  {
     position: absolute;
     width: 55vw;
     top: 50%;
     text-align: center;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: auto;
   }
@@ -211,13 +207,17 @@
   
   .catalogue {
     position: relative;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 800px;           
+    max-width: 90vw;        
+    margin: 55vh auto 0;     
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
+    justify-content: center;
+    padding-bottom: 10em;
     column-gap: 9em;
     row-gap: 9em;
+
+    opacity: 0;              
     z-index: 3;
   }
   
@@ -321,9 +321,11 @@
     }
     .catalogue 
     {
-        left: 50%;
         column-gap: 4em;
         row-gap: 4em;
     }
     .pane { width: 110px; height: 110px; }
   }
+  
+
+  
