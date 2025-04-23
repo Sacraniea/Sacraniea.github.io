@@ -52,7 +52,6 @@
             <div id = "greeting-container" class = "morph">
                 <h1 id = "intro"> Hi, I'm Alexandros Sacranie </h1>
                 <div class = "greeting morph-layer">
-                    
                     <p> A driven Engineering & IT student with a passion for innovation, problem-solving and building things that matter.</p>
                 </div>
 
@@ -75,7 +74,7 @@
             </div>
         </section>
 
-        <section class = "catalogue morph-layer hidden">
+        <section class = "catalogue hidden">
             <div class = "pane glass item1">👨<p>About Me</p></div>
             <div class = "pane glass item2">💼<p>Experience</p></div>
             <div class = "pane glass item3">📄<p>Resume</p></div>
@@ -88,63 +87,67 @@
 
 
         <script>
-            // Register the ScrollTrigger plugin
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Create a timeline that is controlled by scrolling
-            const morphTimeline = gsap.timeline({
-              scrollTrigger: {
-                trigger: ".landing",  // the section that activates the animation
-                start: "top top",     // start the animation when the top of .landing hits the top of the viewport
-                end: "bottom top",    // end the animation when the bottom of .landing reaches the top of the viewport
-                scrub: true           // link the animation progress to the scrollbar position
-              }
-            });
-            
-            // Animate the first text layer to fade out while the second fades in
-            morphTimeline
-                .fromTo(".greeting.morph-layer",
-                { opacity: 1 },
-                { opacity: 1, duration: 0.01 }, 0)
-                .to(".greeting.morph-layer",
-                { opacity: 0, duration: 1 }, 2)
+    // Register the ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
 
-                .fromTo(".greeting-frame2.morph-layer",
-                { opacity: 0 },
-                { opacity: 1, duration: 1 }, 4)
-                .to(".greeting-frame2.morph-layer",
-                { opacity: 0, duration: 1 }, 6)
+    // Build a scrubbed timeline and pin the landing for exactly one viewport of scroll
+    const morphTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".landing",
+        start: "top top",
+        end: "+=100%",   // one viewport height worth of scrub
+        scrub: true,
+        pin: true,        // pin .landing so we can actually scrub through
+        pinSpacing: false,
+      }
+    });
 
-                .fromTo(".greeting-frame3.morph-layer",
-                { opacity: 0 },
-                { opacity: 1, duration: 1 }, 8)
-                .to(".greeting-frame3.morph-layer",
-                { opacity: 0, duration: 1 }, 10)
-
-                .fromTo(".greeting-frame4.morph-layer",
-                { opacity: 0 },
-                { opacity: 1, duration: 1 }, 12)
-                .to(".greeting-frame4.morph-layer",
-                { opacity: 0, duration: 1 }, 14)
-
-                .fromTo(".greeting-framefinal.morph-layer",
-                { opacity: 0 },
-                { opacity: 1, duration: 1 }, 16)
-                .to(["#intro", ".greeting-framefinal.morph-layer"],
-                { opacity: 0, y: -50, duration: 1 }, 18);
-
-                morphTimeline
-                // fade/slide out intro & final frame
-                .to(["#intro", ".greeting-framefinal.morph-layer"], { opacity: 0, y: -50, duration: 1 }, 18)
-
-                // ★★ new: fade & slide the catalogue up ★★
-                .fromTo(".catalogue",
-                    { opacity: 0, y: 50 },
-                    { opacity: 1, y: 0, duration: 1 },
-                    19   // start at 19s into your timeline (just after the last fade)
-            );
-
-            
+    morphTimeline
+  // fade out initial greeting over 1s
+  .to(".greeting.morph-layer", { opacity: 0, duration: 1 })             // 0→1
+  // after a 0.5s blank gap, fade in frame2 over 1s
+  .to(".greeting-frame2.morph-layer",
+      { opacity: 1, duration: 1 },
+      "+=0.5"                                                             // 1.5→2.5
+  )
+  // hold for 0.5s, then fade it out over 1s
+  .to(".greeting-frame2.morph-layer",
+      { opacity: 0, duration: 1 },
+      "+=0.5"                                                             // 3→4
+  )
+  // same pattern for frame3…
+  .to(".greeting-frame3.morph-layer",
+      { opacity: 1, duration: 1 },
+      "+=0.5"                                                             // 4.5→5.5
+  )
+  .to(".greeting-frame3.morph-layer",
+      { opacity: 0, duration: 1 },
+      "+=0.5"                                                             // 6→7
+  )
+  // frame4…
+  .to(".greeting-frame4.morph-layer",
+      { opacity: 1, duration: 1 },
+      "+=0.5"                                                             // 7.5→8.5
+  )
+  .to(".greeting-frame4.morph-layer",
+      { opacity: 0, duration: 1 },
+      "+=0.5"                                                             // 9→10
+  )
+  // final frame…
+  .to(".greeting-framefinal.morph-layer",
+      { opacity: 1, duration: 1 },
+      "+=0.5"                                                             // 10.5→11.5
+  )
+  .to(["#intro", ".greeting-framefinal.morph-layer"],
+      { opacity: 0, y: -50, duration: 1 },
+      "+=0.5"                                                             // 12→13
+  ) 
+  // catalogue reveal
+  .fromTo(".catalogue",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1 },
+      "+=0.5"                                                             // 13.5→14.5
+  );
         </script>
 </body>
 </html>
