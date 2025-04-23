@@ -133,17 +133,15 @@
                 .to(["#intro", ".greeting-framefinal.morph-layer"],
                 { opacity: 0, y: -50, duration: 1 }, 18);
 
-            gsap.fromTo(".catalogue.morph-layer",
-            { opacity: 0 },
-            { 
-                opacity: 1, duration: 0.5,
-                scrollTrigger: 
-                {
-                    trigger: ".catalogue",
-                    start: "top 90%",  // Adjust this to control when the catalogue becomes visible
-                    toggleActions: "play none none reverse"
-                }
-            }
+                morphTimeline
+                // fade/slide out intro & final frame
+                .to(["#intro", ".greeting-framefinal.morph-layer"], { opacity: 0, y: -50, duration: 1 }, 18)
+
+                // ★★ new: fade & slide the catalogue up ★★
+                .fromTo(".catalogue",
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 1 },
+                    19   // start at 19s into your timeline (just after the last fade)
             );
 
             
