@@ -1,483 +1,25 @@
-*
-{
-    font-family: 'Inter', sans-serif;
+/*───────────────── Reset & Base ─────────────────*/
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-}
-*, *::before, *::after 
-{
     box-sizing: border-box;
-}
-html
-{
-    margin: 0;
-    padding: 0;
+  }
+  
+  html {
     width: 100%;
-
-}
-html, body {
+  }
+  
+  html, body {
     overflow-x: hidden;
     max-width: 100%;
-}
-
-/* ----------------- Mobile Navbar -------------------*/
-    #mobilenav, #mobilehamburger
-    {
-        display:none;
-    }
-
-    #mobilenav ul
-    {
-        opacity: 0; 
-        margin: 0;
-        padding: 0;
-        width: 100%;
-
-        /* Navigation Format */
-        list-style: none;
-        display:flex;
-        flex-direction: column-reverse;
-        padding-top: 1rem;
-        animation: fadeSlideUp 1s ease-out 0.5s forwards;
-    }
-    
-    #mobilenav a
-    {
-            /* Navigation Text Fortmatitng and Positioning */
-            display: block;
-            width: 100%;
-            padding: 3rem 0;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #ffffffc6;
-            text-decoration: none;
-            text-align: center;
-    }
-
-    #mobilenav li:hover,#mobilenav li:active #mobilehamburger:hover,#mobilehamburger:active
-    {
-        /* Hover Effect */
-        background: rgba(255, 255, 255, 0.133); /* light white tint */
-        backdrop-filter: blur(50px);
-        -webkit-backdrop-filter: blur(50px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* subtle glow */
-        border-left: 1px solid #ffffff4b;
-    }
-
-    #mobilenav > ul > li
-    {
-        /* Top Layer Navigation */
-
-        align-items: stretch;
-        transition: 0.5s ease-out;
-
-
-    }
-
-/* ----------------- Desktop Navbar -------------------*/
-    #desktopnav
-    {
-        position: fixed;
-        right: 10px;
-        top: 10px;
-        left: 10px;
-        z-index: 10;
-    }
-
-/* Navigation Bar Styling */
-    #desktopnav ul
-    {
-        opacity: 0; 
-        margin: 0;
-        padding: 0;
-
-        /* Navigation Format */
-        list-style: none;
-        display:flex;
-        flex-direction: row-reverse;
-        animation: fadeSlideUp 1s ease-out 0.5s forwards;
-    }
-
-    #desktopnav .home
-    {
-        margin-right: auto;
-    }
-
-    #desktopnav a
-    {
-            /* Navigation Text Fortmatitng and Positioning */
-            padding: 30px 30px; 
-            color: #ffffffc6;
-            text-decoration: none;
-            text-align: center;
-    }
-
-    #desktopnav li:hover
-    {
-        /* Hover Effect */
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.133); /* light white tint */
-        backdrop-filter: blur(50px);
-        -webkit-backdrop-filter: blur(50px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* subtle glow */
-
-    }
-
-    #desktopnav > ul > li
-    {
-        /* Top Layer Navigation */
-        display: flex;
-        position: relative;
-
-        justify-content: center;
-        align-items: center;
-
-        height: 75px;
-        border-radius: 1rem;
-        transition: 0.5s ease-out;
-
-
-    }
-
-    #desktopnav .dropdown
-    {
-        /* Drop-down */
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        align-items: stretch;
-
-        top:101%;
-        z-index: 10;
-        margin: 0;
-
-        
-        animation: fadeSlideUp 0.1s ease-out 0.1s forwards;
-    }
-
-    #desktopnav .dropdown li
-    {                       /* submenu rows */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #desktopnav li:hover > .dropdown
-    {
-        /* Drop-down on Hover */
-        display: flex;
-    }
-
-
-/* Landing Page Formatting*/
-
-    body
-    {
-        width: 100vw;
-        background: linear-gradient(160deg,
-        #0b0c10 0%,
-        #151823 50%,
-        #1f222d 100%
-      );
-        height: 400vh;
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
-    h1,p
-    {
-        color: transparent;
-        font-weight: bold;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.904));
-        -webkit-background-clip: text;
-        background-clip: text;
-    }
-
-    /*Landing Text Configuration*/
-    #intro 
-    {
-        font-size: 48px;
-        padding-bottom: 2em ;
-        font-weight: bolder;
-        position: static;
-    }
-
-    .landing {
-
-        z-index: 1; 
-        position: fixed ;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-
-        font-size: 24px;
-        text-align: center;
-        animation: fadeSlideUp 1s ease-out 0.5s forwards;
-
-      }
-
-      .morph-layer 
-      {
-        position: absolute;
-
-        width: 55vw;
-        top:50%;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-
-
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: auto;
-      }
-    /*Manage Hidden text*/
-    .hidden
-    {
-        opacity: 0;
-    }
-
-    /*Morph Text Positioning*/
-    .morph {
-        display: flex;
-        flex-direction: column;
-        row-gap: 2.5rem;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 800px;
-      }
-
-    /*Morph Text Formatting*/     
-
-    .catalogue 
-    {
-
-
-        top: 230vh;
-
-        left: 50%;
-        transform: translate(-50%, -50%);
-    
-        display: flex;
-        flex-wrap: wrap;
-    
-        width: 800px;
-        column-gap: 9em;
-        row-gap: 9em;
-        
-    }
-
-    .item1, .item2, .item3, .item4, .item5, .item6
-    {
-        text-align: center;
-        justify-content: center;
-        z-index: 5;
-    }
-
-    .pane
-    {
-        display: flex;
-        row-gap: 0.25em;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 200px;
-        height: 200px;
-        text-align: center;
-        background: transparent; 
-        transition: 0.5s ease-in-out;
-    }
-
-    .pane:hover 
-    {
-        background: rgba(255, 255, 255, 0.246); /* Slightly brighter background on hover */
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.542); /* Enhanced shadow for a "lift" effect */
-        transform: translateY(-5px); /* Subtle lift effect */
-        border: 1px solid rgba(255, 255, 255, 0.471); /* Increase border brightness */
-
-    }
-
-/* Universal Glass Effect */
-    .glass
-    {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-
-
-        background: rgba(255, 255, 255, 0.05); /* light white tint */
-        border: 1px solid rgba(255, 255, 255, 0.12);
-
-        border-radius: 1rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-
-    }
-
-/* Media Options */
-
-@media(max-width: 950px)
-{
-    .catalogue 
-    {
-        top: 280vh;
-    }
-    body
-    {
-        height: 470vh;
-    }
-
-}
-
-@media(max-width: 800px)
-{
-
-    #desktopnav
-    {
-        display: none;
-    }
-    
-    #mobilenav
-    {
-        display: block;
-        position: fixed;
-        top: 10px;
-        right: -100%;
-        height: 100%;
-        width: 80%;
-        z-index: 10;
-        border-left: 1px solid #ffffff69;
-        transition: right 300ms ease-out
-    }
-
-    #overlay
-    {
-        background: #00000076;
-        position: fixed;
-        inset:0;
-        z-index: 9;
-        display: none;
-    }
-
-    #mobilenav.show
-    {
-        right:0;
-    }
-
-    #mobilenav.show ~ #overlay
-    {
-        display: block;
-    }
-
-    #mobilehamburger
-    {
-        color: #ffffffa6;
-        padding: 1em;
-        display: block;
-        position: fixed;
-        top:10px;
-        right: 10px;
-        cursor: pointer;
-        z-index: 9;
-    }
-
-    #mobilehamburger .material-symbols-rounded,#mobileclose .material-symbols-rounded  
-    {
-        font-size: 2.5rem;
-    }
-
-    #mobileclose
-    {
-        background: none;
-        border: none;
-        padding: 1em;
-        cursor: pointer;
-        color: #ffff ;
-    }
-    #mobilenav ul li:last-child 
-    {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 1em;
-        
-    }
-
-    body
-    {
-        height: 2500px;
-
-    }
-
-    #intro 
-    {
-        text-align: left;
-        font-size: 42px;
-        width: 85vw;
-    }
-    .landing 
-    {
-        
-        font-size: 21px;
-    }
-    .morph-layer 
-    {
-        left:10%;
-        text-align: left;
-        top:57%;
-        width: 80%;
-    }
-
-    .catalogue 
-    {
-
-        position: absolute;
-        left: 50%;
-        top:210vh;
-        column-gap: 4em;
-        row-gap: 4em;
-        z-index: 3;
-        
-    }
-
-
-    .pane
-    {
-
-        width: 110px;
-        height: 110px;
-
-    }
-
-}
-
-@media(max-width: 670px)
-{
-
-    body
-    {
-        height: 300vh;
-    }
-    #mobilenav a
-    {
-            /* Navigation Text Fortmatitng and Positioning */
-            display: block;
-            width: 100%;
-            padding: 1rem 0;
-            font-size: 1rem;
-    }
-
-    #mobilenav ul
-    {
-
-        padding-top: 0rem;
-
-    }
-
-}
-
-
-@keyframes fadeSlideUp {
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /*───────────────── Animations ─────────────────*/
+  @keyframes fadeSlideUp {
     0% {
       opacity: 0;
       transform: translateY(3vh);
@@ -486,4 +28,302 @@ html, body {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  
+  /*───────────────── Mobile Navbar ─────────────────*/
+  #mobilenav, #mobilehamburger {
+    display: none;
+  }
+  
+  #mobilenav ul {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    padding-top: 1rem;
+    list-style: none;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out 0.5s forwards;
+  }
+  
+  #mobilenav a {
+    display: block;
+    width: 100%;
+    padding: 3rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffffc6;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  /* hover/active shared for mobile nav items & hamburger */
+  #mobilenav li:hover,
+  #mobilenav li:active,
+  #mobilehamburger:hover,
+  #mobilehamburger:active {
+    background: rgba(255, 255, 255, 0.133);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-left: 1px solid #ffffff4b;
+  }
+  
+  #mobilenav > ul > li {
+    align-items: stretch;
+    transition: 0.5s ease-out;
+  }
+  
+  /*───────────────── Desktop Navbar ─────────────────*/
+  #desktopnav {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 10;
+  }
+  
+  #desktopnav ul {
+    display: flex;
+    flex-direction: row-reverse;
+    list-style: none;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out 0.5s forwards;
+  }
+  
+  #desktopnav .home {
+    margin-right: auto;
+  }
+  
+  #desktopnav a {
+    padding: 30px;
+    color: #ffffffc6;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  #desktopnav > ul > li {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    border-radius: 1rem;
+    transition: 0.5s ease-out;
+  }
+  
+  #desktopnav li:hover {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.133);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* dropdown */
+  #desktopnav .dropdown {
+    display: none;
+    position: absolute;
+    top: 101%;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    z-index: 10;
+    animation: fadeSlideUp 0.1s ease-out 0.1s forwards;
+  }
+  
+  #desktopnav .dropdown li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #desktopnav li:hover > .dropdown {
+    display: flex;
+  }
+  
+  /*───────────────── Landing Page ─────────────────*/
+  body {
+    background: linear-gradient(160deg, #0b0c10 0%, #151823 50%, #1f222d 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 400vh;
+  }
+  
+  h1, p {
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.904));
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #intro {
+    font-size: 48px;
+    padding-bottom: 2em;
+    font-weight: bolder;
+    position: static;
+  }
+  
+  .landing {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    min-height: 100vh;  
+    overflow: hidden;   
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    animation: fadeSlideUp 1s ease-out 0.5s forwards;
+  }
+  
+  .morph-layer {
+    position: absolute;
+    width: 55vw;
+    top: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: auto;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  .morph {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .catalogue {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    column-gap: 9em;
+    row-gap: 9em;
+    z-index: 3;
+  }
+  
+  .item1, .item2, .item3, .item4, .item5, .item6 {
+    text-align: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  
+  .pane {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25em;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background: transparent;
+    transition: 0.5s ease-in-out;
+  }
+  
+  .pane:hover {
+    background: rgba(255, 255, 255, 0.246);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.542);
+    transform: translateY(-5px);
+    border: 1px solid rgba(255, 255, 255, 0.471);
+  }
+  
+  /*───────────────── Universal Glass Effect ─────────────────*/
+  .glass {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /*───────────────── Responsive Tweaks ─────────────────*/
+
+  
+  @media (max-width: 800px) {
+    #desktopnav { display: none; }
+    #mobilenav {
+      display: block;
+      position: fixed;
+      top: 10px;
+      right: -100%;
+      width: 80%;
+      height: 100%;
+      border-left: 1px solid #ffffff69;
+      transition: right 300ms ease-out;
+      z-index: 10;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #00000076;
+      z-index: 9;
+    }
+    #mobilenav.show { right: 0; }
+    #mobilenav.show ~ #overlay { display: block; }
+  
+    #mobilehamburger {
+      display: block;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 1em;
+      cursor: pointer;
+      z-index: 9;
+      color: #ffffffa6;
+    }
+    #mobilehamburger .material-symbols-rounded,
+    #mobileclose   .material-symbols-rounded {
+      font-size: 2.5rem;
+    }
+    #mobileclose {
+      background: none;
+      border: none;
+      padding: 1em;
+      cursor: pointer;
+      color: #fff;
+    }
+    #mobilenav ul li:last-child {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 1em;
+    }
+  
+    body      { height: 2500px; }
+    #intro    { text-align: left; font-size: 42px; width: 85vw; }
+    .landing  { font-size: 21px; }
+    .morph-layer {
+      left: 10%;
+      top: 57%;
+      width: 80%;
+      text-align: left;
+    }
+    .catalogue 
+    {
+        left: 50%;
+        column-gap: 4em;
+        row-gap: 4em;
+    }
+    .pane { width: 110px; height: 110px; }
   }
