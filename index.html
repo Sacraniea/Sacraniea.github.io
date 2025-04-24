@@ -12,7 +12,8 @@
     <script>
 
         function setVH(){document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`);}
-        window.addEventListener('resize', setVH);
+        window.addEventListener('load', setVH);
+        window.addEventListener('orientationchange', setVH);
         setVH();
     </script>
 </head>
