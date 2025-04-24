@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
     <script src = "script.js" defer> </script>
     <script>
+
         function setVH(){document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`);}
         window.addEventListener('resize', setVH);
         setVH();
@@ -92,35 +93,35 @@
 
 
         <script>
-    // Register the ScrollTrigger plugin
+
     gsap.registerPlugin(ScrollTrigger);
 
-    // Build a scrubbed timeline and pin the landing for exactly one viewport of scroll
+
     const morphTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".landing",
         start: "top top",
-        end: "+=100%",   // one viewport height worth of scrub
+        end: "+=100%",   
         scrub: true,
-        pin: true,        // pin .landing so we can actually scrub through
+        pin: true,    
         pinSpacing: false,
       }
     });
 
     morphTimeline
-  // fade out initial greeting over 1s
+
   .to(".greeting.morph-layer", { opacity: 0, duration: 1 })             // 0→1
-  // after a 0.5s blank gap, fade in frame2 over 1s
+
   .to(".greeting-frame2.morph-layer",
       { opacity: 1, duration: 1 },
-      "+=0.5"                                                             // 1.5→2.5
+      "+=0.5"                                                         
   )
-  // hold for 0.5s, then fade it out over 1s
+
   .to(".greeting-frame2.morph-layer",
       { opacity: 0, duration: 1 },
       "+=0.5"                                                             // 3→4
   )
-  // same pattern for frame3…
+ 
   .to(".greeting-frame3.morph-layer",
       { opacity: 1, duration: 1 },
       "+=0.5"                                                             // 4.5→5.5
@@ -129,7 +130,7 @@
       { opacity: 0, duration: 1 },
       "+=0.5"                                                             // 6→7
   )
-  // frame4…
+
   .to(".greeting-frame4.morph-layer",
       { opacity: 1, duration: 1 },
       "+=0.5"                                                             // 7.5→8.5
@@ -138,7 +139,6 @@
       { opacity: 0, duration: 1 },
       "+=0.5"                                                             // 9→10
   )
-  // final frame…
   .to(".greeting-framefinal.morph-layer",
       { opacity: 1, duration: 1 },
       "+=0.5"                                                             // 10.5→11.5
@@ -147,7 +147,6 @@
       { opacity: 0, y: -50, duration: 1 },
       "+=0.5"                                                             // 12→13
   ) 
-  // catalogue reveal
   .fromTo(".catalogue",
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 1 },
