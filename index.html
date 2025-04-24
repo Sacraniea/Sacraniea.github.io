@@ -95,22 +95,18 @@
         <script>
 
     gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.config(
-        {
-            autoRefreshEvents: "visibilitychange, pointerenter, pointerleave"
-        }
-    )
+    ScrollTrigger.normalizeScroll(true);
 
     const morphTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".landing",
         start: "top top",
-        end: "+=100%",   
+        end: "+=100%", 
+        markers: true,  
         scrub: true,
         pin: true,    
         invalidateOnRefresh:false,
-        pinSpacing: false,
+        pinSpacing: false
       }
     });
 
