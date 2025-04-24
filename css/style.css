@@ -166,6 +166,7 @@
 
 
   .landing {
+    opacity: 0;
     position: relative; 
     width: 100%;
     height: 100vh;      
@@ -331,6 +332,3 @@
     }
     .pane { width: 110px; height: 110px; }
   }
-  
-
-  
